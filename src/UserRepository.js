@@ -12,6 +12,10 @@ class UserRepository {
     return Math.round(totalSteps /this.userRepo.length)
   }
 
+  returnUserData(id) {
+    return this.userRepo.find(user => user.id === id)
+  }
+
 }
 
 export default UserRepository;

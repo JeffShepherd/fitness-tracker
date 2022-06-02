@@ -28,5 +28,9 @@ describe('User Repository', () => {
     expect(testUserRepo.findAverageDailyStepGoal()).to.equal(6667);
   });
 
+  it('should be able to return user details for a specific id', function () {
+    expect(testUserRepo.returnUserData(2)).to.be.an('object');
+    expect(testUserRepo.returnUserData(3).strideLength).to.equal(4.4);
+  });
 
 });
