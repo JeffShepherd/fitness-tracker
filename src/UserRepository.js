@@ -17,7 +17,7 @@ class UserRepository {
   }
 
   returnFriendInfo(ids) {
-    return this.userRepo.filter(user => ids.includes(user.id))
+    return ids.map(id => this.returnUserData(id))
   }
 
 }
