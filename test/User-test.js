@@ -37,5 +37,8 @@ describe('User', () => {
     expect(testUser.friends[1]).to.equal(4);
   });
 
+  it('should be able to return the user\'s first name', function () {
+    expect(testUser.provideFirstName()).to.equal('Luisa');
+  });
 
 });
