@@ -24,13 +24,22 @@ describe('User Repository', () => {
     expect(testUserRepo.userRepo[2].friends.length).to.equal(4);
   });
   
-  it('should be able to return average daily step goal for all users', function () {
+  it('should return average daily step goal for all users', function () {
     expect(testUserRepo.findAverageDailyStepGoal()).to.equal(6667);
   });
 
-  it('should be able to return user details for a specific id', function () {
+  it('should return user details for a specific id', function () {
     expect(testUserRepo.returnUserData(2)).to.be.an('object');
     expect(testUserRepo.returnUserData(3).strideLength).to.equal(4.4);
+  });
+
+  it('should return friend\'s details based on an array of IDs', function () {
+    const ids = [2,3]
+    const ids2 = [1]
+    expect(testUserRepo.returnFriendInfo(ids)).to.be.an('array');
+    expect(testUserRepo.returnFriendInfo(ids)[0].id).equal(2);
+    expect(testUserRepo.returnFriendInfo(ids)[1].id).equal(3);
+    expect(testUserRepo.returnFriendInfo(ids2)[0].name).equal('Luisa Hane');
   });
 
 });

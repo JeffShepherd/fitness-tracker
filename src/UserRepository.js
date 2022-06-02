@@ -16,6 +16,10 @@ class UserRepository {
     return this.userRepo.find(user => user.id === id)
   }
 
+  returnFriendInfo(ids) {
+    return this.userRepo.filter(user => ids.includes(user.id))
+  }
+
 }
 
 export default UserRepository;
