@@ -24,6 +24,9 @@ describe('User Repository', () => {
     expect(testUserRepo.userRepo[2].friends.length).to.equal(4);
   });
   
+  it('should be able to return average daily step goal for all users', function () {
+    expect(testUserRepo.findAverageDailyStepGoal()).to.equal(6667);
+  });
 
 
 });

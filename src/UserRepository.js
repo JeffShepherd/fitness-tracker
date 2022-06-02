@@ -4,6 +4,14 @@ class UserRepository {
   constructor(data) {
     this.userRepo = data.map(user => new User(user))
   }
+
+  findAverageDailyStepGoal() {
+    const totalSteps = this.userRepo.reduce((steps, user) => {
+      return steps += user.dailyStepGoal
+    },0)
+    return Math.round(totalSteps /this.userRepo.length)
+  }
+
 }
 
 export default UserRepository;
