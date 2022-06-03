@@ -1,5 +1,12 @@
-// Your fetch requests will live here!
 
+const checkIfError = response => {
+  if (!response.ok) {
+    throw new Error('An error has been encountered. Please try again.');
+  } else {
+    return response.json();
+  }
+}
 
-console.log('I will be a fetch request!')
-
+export const userDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/users")
+  .then(checkIfError)
+  .catch(err => alert(err))
