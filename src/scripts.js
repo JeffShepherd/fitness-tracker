@@ -21,15 +21,18 @@ const userEmail = document.getElementById('user-email')
 const userStrideLength = document.getElementById('user-strideLength')
 const userDailyStepGoal = document.getElementById('user-dailyStepGoal')
 const userCardBottomSection = document.getElementById('user-info-card-bottom-section')
-// friends?
+const headerUserName = document.getElementById('header-user-name')
 
-window.addEventListener('load', populateCurrentUserCard)
+window.addEventListener('load', populateInfoOnLoad)
 
 
 let userRepository = new UserRepository(userData)
 let currentUser = new User(userData[0])
 
-
+function populateInfoOnLoad() {
+  populateCurrentUserCard()
+  headerUserName.innerText = `Welcome back, ${currentUser.provideFirstName()}!`
+}
 
 function populateCurrentUserCard() {
   const splitAddressLines = currentUser.address.split(',')

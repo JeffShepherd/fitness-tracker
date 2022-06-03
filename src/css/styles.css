@@ -2,17 +2,22 @@
 body {
   height: 100vh;
   width: 100%;
-  background-color: lightgray;
   display: flex;
+  flex-direction: column;
 }
 
 main {
-  height: 99%;
-  width: 99%;
+  height: 100%;
+  width: 100%;
   margin: auto;
-  border: 2px solid whitesmoke;
   background-color: black;
-  border-radius: 2%;
+}
+
+#header-user-name {
+  background-color: rgb(56, 53, 53);
+  color: white;
+  text-align: right;
+  padding: 1% 2% 1% 0%;
 }
 
 #user-info-card {
@@ -23,7 +28,7 @@ main {
   margin: auto;
   border: 2px solid lightgreen;
   background-color: whitesmoke;
-  border-radius: 2%;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
