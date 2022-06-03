@@ -21,10 +21,9 @@ main {
 }
 
 #user-info-card {
-  background-color: red;
-  height: 40%;
+  height: auto;
   width: 80%;
-  border-radius: 2%;
+  padding: 5% 0;
   margin: auto;
   border: 2px solid lightgreen;
   background-color: whitesmoke;
@@ -46,4 +45,14 @@ main {
 #user-info-card-top-section-left, 
 #user-info-card-top-section-right {
   width: 45%;
+}
+
+#step-goal-card {
+  height: auto;
+  width: 80%;
+  padding: 5% 0;
+  margin: auto;
+  border: 2px solid lightgreen;
+  background-color: whitesmoke;
+  border-radius: 7px;
 }

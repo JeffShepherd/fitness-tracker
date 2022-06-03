@@ -22,6 +22,8 @@ const userStrideLength = document.getElementById('user-strideLength')
 const userDailyStepGoal = document.getElementById('user-dailyStepGoal')
 const userCardBottomSection = document.getElementById('user-info-card-bottom-section')
 const headerUserName = document.getElementById('header-user-name')
+const dailyStepGoal = document.getElementById('user-daily-step-goal')
+const averageDailyStepGoal = document.getElementById('average-daily-step-goal')
 
 window.addEventListener('load', populateInfoOnLoad)
 
@@ -31,7 +33,15 @@ let currentUser = new User(userData[0])
 
 function populateInfoOnLoad() {
   populateCurrentUserCard()
-  headerUserName.innerText = `Welcome back, ${currentUser.provideFirstName()}!`
+  headerUserName.innerText = 
+  `Welcome back, ${currentUser.provideFirstName()}!`
+  populateStepGoalCard()
+}
+
+function populateStepGoalCard() {
+  dailyStepGoal.innerText = `You: ${currentUser.dailyStepGoal}`
+  averageDailyStepGoal.innerText = 
+  `All users average: ${userRepository.findAverageDailyStepGoal()}`
 }
 
 function populateCurrentUserCard() {
