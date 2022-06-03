@@ -1,10 +1,9 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import userData from '../src/data/users'
+import userTestData from '../src/data/testData'
 
 describe('User Repository', () => {
-  const testData = userData.slice(0,3)
-  const testUserRepo = new UserRepository(testData)
+  const testUserRepo = new UserRepository(userTestData)
 
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
