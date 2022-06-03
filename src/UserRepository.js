@@ -16,6 +16,10 @@ class UserRepository {
     return this.userRepo.find(user => user.id === id)
   }
 
+  returnFriendInfo(ids) {
+    return ids.map(id => this.returnUserData(id))
+  }
+
 }
 
 export default UserRepository;

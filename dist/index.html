@@ -5,9 +5,38 @@
     <title>Fitness Tracker</title>
   </head>
   <body>
-    <h1>Fitness Tracker</h1>
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+    <h1 id="header-user-name"></h1>
+    <main>
+      <!-- user info card -->
+      <article id="user-info-card">
+        <section id="user-info-card-top-section">
+          <div id="user-info-card-top-section-left">
+            <p id="user-name"></p>
+            <p id="user-email"></p>
+          </div>
+          <div id="user-info-card-top-section-right">
+            <p id="user-address-one"></p>
+            <p id="user-address-two"></p>
+          </div>
+        </section>
+        <section  id="user-info-card-middle-section">
+          <p id="user-strideLength"></p>
+          <p id="user-dailyStepGoal"></p>
+        </section>
+        <section id="user-info-card-bottom-section">
+          <!-- friends-->
+        </section>
+      </article>
+      <!-- global step avg comparison card -->
+      <article id="step-goal-card">
+        <h2>Daily Step Goal</h2>
+        <section>
+          <p id="user-daily-step-goal"></p>
+          <p id="average-daily-step-goal"></p>
+        </section>
+      </article>
+    </main>
   </body>
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
 </html>
