@@ -15,5 +15,10 @@ describe('Hydration', () => {
     expect(testHydration.hydrationData[6].numOunces).to.equal(47);
   });
 
+  it('should return a user\'s average daily fluid consumption', function () {
+    expect(testHydration.getAverageFlOunces(3)).to.equal(61);
+    expect(testHydration.getAverageFlOunces(4)).to.equal(85);
+  });
+
 
 });
