@@ -20,5 +20,10 @@ describe('Hydration', () => {
     expect(testHydration.getAverageFlOunces(4)).to.equal(85);
   });
 
+  it('should return a user\'s fluid consumption for a specific date', function () {
+    expect(testHydration.getDailyHydration('2019/06/17',6)).to.equal(84);
+    expect(testHydration.getDailyHydration('2019/06/16',5)).to.equal(47);
+  });
+
 
 });
