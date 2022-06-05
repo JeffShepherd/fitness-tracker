@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import userTestData from '../src/data/testData'
+import {userTestData} from '../src/data/testData'
 
 describe('User Repository', () => {
   const testUserRepo = new UserRepository(userTestData)

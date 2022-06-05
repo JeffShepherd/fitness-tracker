@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import User from '../src/User';
-import userTestData from '../src/data/testData'
+import {userTestData} from '../src/data/testData'
 
 describe('User', () => {
   let testUser = new User(userTestData[0])
