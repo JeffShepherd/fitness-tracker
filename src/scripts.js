@@ -9,7 +9,6 @@ import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
 
-
 const userName = document.getElementById('user-name')
 const userAddressOne = document.getElementById('user-address-one')
 const userAddressTwo = document.getElementById('user-address-two')
@@ -20,6 +19,9 @@ const userCardBottomSection = document.getElementById('user-info-card-bottom-sec
 const headerUserName = document.getElementById('header-user-name')
 const dailyStepGoal = document.getElementById('user-daily-step-goal')
 const averageDailyStepGoal = document.getElementById('average-daily-step-goal')
+const todayHydrationData = document.getElementById('today-hydration-data')
+const sevenDaysHydration= document.getElementById('seven-days-hydration')
+
 
 let userRepository, currentUser, hydrationRepo;
 
@@ -37,6 +39,31 @@ function populateInfoOnLoad(userData, hydrationData) {
   populateCurrentUserCard()
   headerUserName.innerText = `Welcome back, ${currentUser.provideFirstName()}!`
   populateStepGoalCard()
+  populateHydrationCard()
+}
+
+function populateHydrationCard() {
+  const currentDate = new Date().toISOString().split('T')[0].replace(/-/g,'/')
+  const data = hydrationRepo.getDailyHydration(currentDate, currentUser.id)
+  if(data) {
+    todayHydrationData.innerText = data
+  } else {
+    todayHydrationData.innerText = 'No data has been logged for today'
+  }
+  addWeeklyHydrationContent()
+}
+
+function addWeeklyHydrationContent() {
+  const lastWeekData = hydrationRepo.getPriorSevenDays(currentUser.id)
+  let lastWeekDisplay =''
+  lastWeekData.forEach(entry => {
+    lastWeekDisplay +=
+    `<div>
+      <p>${entry.date}</p>
+      <p>${entry.numOunces}</p>
+    </div>`
+  })
+  sevenDaysHydration.innerHTML = lastWeekDisplay
 }
 
 function populateStepGoalCard() {
