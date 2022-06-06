@@ -21,6 +21,14 @@ class Hydration {
     return dailyHydration.numOunces
   }
 
+  getPriorSevenDays(id) {
+    let lastWeekOfData = this.hydrationData.filter(entry => entry.userID === id)
+    lastWeekOfData.sort(
+      (a,b) => parseInt(a.date.replaceAll('/','')) - parseInt(b.date.replaceAll('/',''))
+    )
+    return lastWeekOfData.slice(lastWeekOfData.length-7,lastWeekOfData.length)
+  }
+
 }
 
 export default Hydration;

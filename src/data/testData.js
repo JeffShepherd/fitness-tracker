@@ -54,7 +54,22 @@ export const hydrationTestData = [
   {"userID":3,"date":"2019/06/17","numOunces":42},
   {"userID":4,"date":"2019/06/17","numOunces":87},
   {"userID":5,"date":"2019/06/17","numOunces":94},
-  {"userID":6,"date":"2019/06/17","numOunces":84}
+  {"userID":6,"date":"2019/06/17","numOunces":84},
+  {"userID":7,"date":"2019/06/17","numOunces":84},
+  {"userID":7,"date":"2020/06/17","numOunces":88},
+  {"userID":7,"date":"2019/07/17","numOunces":89},
+  {"userID":7,"date":"2019/06/18","numOunces":18},
+  {"userID":7,"date":"2019/06/17","numOunces":44},
+  {"userID":7,"date":"2019/08/17","numOunces":2},
+  {"userID":7,"date":"2019/08/18","numOunces":44},
+  {"userID":7,"date":"2020/06/16","numOunces":84},
+  {"userID":7,"date":"2020/06/15","numOunces":45},
+  {"userID":7,"date":"2020/06/30","numOunces":54},
+  {"userID":7,"date":"2019/06/02","numOunces":11},
+  {"userID":7,"date":"2019/06/11","numOunces":22},
+  {"userID":7,"date":"2019/06/22","numOunces":33},
+  {"userID":7,"date":"2019/01/01","numOunces":44},
+  {"userID":7,"date":"2019/06/27","numOunces":55},
 ]
 
 
