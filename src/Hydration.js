@@ -18,7 +18,11 @@ class Hydration {
   getDailyHydration(date, id) {
     const dailyHydration = this.hydrationData.find(entry => 
       entry.date === date && entry.userID === id)
-    return dailyHydration.numOunces
+    if(!dailyHydration) {
+      return false
+    } else {
+      return dailyHydration.numOunces
+    }
   }
 
   getPriorSevenDays(id) {
