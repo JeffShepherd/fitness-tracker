@@ -22,7 +22,7 @@ main {
 
 #user-info-card {
   height: auto;
-  width: 80%;
+  width: 95%;
   padding: 5% 0;
   margin: auto;
   border: 2px solid lightgreen;
@@ -49,10 +49,31 @@ main {
 
 #step-goal-card {
   height: auto;
-  width: 80%;
+  width: 95%;
   padding: 5% 0;
   margin: auto;
   border: 2px solid lightgreen;
   background-color: whitesmoke;
   border-radius: 7px;
+}
+
+#hydration-card {
+  height: auto;
+  width: 95%;
+  padding: 5% 0;
+  margin: auto;
+  border: 2px solid lightgreen;
+  background-color: whitesmoke;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+#hydration-column-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#seven-days-hydration {
+  display: flex;
 }

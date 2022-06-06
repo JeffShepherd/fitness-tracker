@@ -10,3 +10,7 @@ const checkIfError = response => {
 export const userDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/users")
   .then(checkIfError)
   .catch(err => alert(err))
+
+export const hydrationDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
+  .then(checkIfError)
+  .catch(err => alert(err))
