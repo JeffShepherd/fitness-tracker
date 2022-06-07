@@ -56,6 +56,12 @@ class Sleep {
     return lastWeekOfData.slice(lastWeekOfData.length-7,lastWeekOfData.length)
   }
 
+  getAverageSleepQualityForAll() {
+    const totalHours = this.sleepData.reduce((hours,entry) => {
+      return hours += entry.hoursSlept
+    },0)
+    return Math.round(totalHours/this.sleepData.length)
+  }
 
 }
 
