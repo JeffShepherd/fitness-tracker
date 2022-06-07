@@ -3,7 +3,7 @@ import './css/reset.css'
 import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
-import {userDataAPICall,hydrationDataAPICall} from './apiCalls'
+import {userDataAPICall,hydrationDataAPICall, sleepDataAPICall} from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
@@ -28,11 +28,11 @@ let userRepository, currentUser, hydrationRepo;
 window.addEventListener('load', getAllUserInfo)
 
 function getAllUserInfo() {
-  Promise.all([userDataAPICall, hydrationDataAPICall])
-    .then(data => populateInfoOnLoad(data[0].userData,data[1].hydrationData))
+  Promise.all([userDataAPICall, hydrationDataAPICall,sleepDataAPICall])
+    .then(data => populateInfoOnLoad(data[0].userData,data[1].hydrationData,data[1].sleepData))
 }
 
-function populateInfoOnLoad(userData, hydrationData) {
+function populateInfoOnLoad(userData, hydrationData, sleepData) {
   userRepository = new UserRepository(userData)
   currentUser = new User(userData[0])
   hydrationRepo = new Hydration(hydrationData)
