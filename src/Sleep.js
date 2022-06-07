@@ -28,6 +28,15 @@ class Sleep {
     return Math.round(totalQuality/counter)
   }
 
+  getDailyHoursSlept(date,id) {
+    const dailySleep = this.sleepData.find(entry => 
+      entry.date === date && entry.userID === id)
+    if(!dailySleep) {
+      return false
+    } else {
+      return Math.round(dailySleep.hoursSlept)
+    }  }
+
 
 }
 
