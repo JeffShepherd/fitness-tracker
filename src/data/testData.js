@@ -72,5 +72,27 @@ export const hydrationTestData = [
   {"userID":7,"date":"2019/06/27","numOunces":55},
 ]
 
+export const sleepTestData = [
+  {"userID":1,"date":"2019/06/15","hoursSlept":6.1,"sleepQuality":2.2},
+  {"userID":2,"date":"2019/06/15","hoursSlept":7,"sleepQuality":4.7},
+  {"userID":3,"date":"2019/06/15","hoursSlept":10.8,"sleepQuality":4.7},
+  {"userID":4,"date":"2019/06/15","hoursSlept":5.4,"sleepQuality":3},
+  {"userID":1,"date":"2019/06/16","hoursSlept":4.1,"sleepQuality":3.6},
+  {"userID":2,"date":"2019/06/16","hoursSlept":9.6,"sleepQuality":2.9},
+  {"userID":3,"date":"2019/06/16","hoursSlept":5.1,"sleepQuality":2.6},
+  {"userID":4,"date":"2019/06/16","hoursSlept":8.1,"sleepQuality":3.5},
+  {"userID":1,"date":"2019/07/15","hoursSlept":8.9,"sleepQuality":2.2},
+  {"userID":1,"date":"2020/06/15","hoursSlept":1,"sleepQuality":1},
+  {"userID":7,"date":"2019/06/15","hoursSlept":2,"sleepQuality":2},
+  {"userID":7,"date":"2020/06/15","hoursSlept":3,"sleepQuality":3},
+  {"userID":7,"date":"2020/06/16","hoursSlept":4,"sleepQuality":4},
+  {"userID":7,"date":"2020/07/15","hoursSlept":5,"sleepQuality":5},
+  {"userID":7,"date":"2020/06/18","hoursSlept":6,"sleepQuality":6},
+  {"userID":7,"date":"2020/06/30","hoursSlept":7,"sleepQuality":7},
+  {"userID":7,"date":"2021/06/15","hoursSlept":8,"sleepQuality":8},
+  {"userID":7,"date":"2020/06/01","hoursSlept":9,"sleepQuality":9},
+
+]
+
 
 
