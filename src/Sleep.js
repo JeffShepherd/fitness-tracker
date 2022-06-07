@@ -48,6 +48,14 @@ class Sleep {
     }
   }
 
+  getPriorSevenDays(id) {
+    let lastWeekOfData = this.sleepData.filter(entry => entry.userID === id)
+    lastWeekOfData.sort(
+      (a,b) => parseInt(a.date.replaceAll('/','')) - parseInt(b.date.replaceAll('/',''))
+    )
+    return lastWeekOfData.slice(lastWeekOfData.length-7,lastWeekOfData.length)
+  }
+
 
 }
 

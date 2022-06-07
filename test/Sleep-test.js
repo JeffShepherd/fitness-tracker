@@ -10,7 +10,7 @@ describe('Sleep', () => {
   });
 
   it('should return a user\'s average hours of sleep for all time', function () {
-    expect(testSleep.getAverageHoursOfSleep(1)).to.equal(6);
+    expect(testSleep.getAverageHoursOfSleep(1)).to.equal(5);
     expect(testSleep.getAverageHoursOfSleep(2)).to.equal(8);
   });
 
@@ -29,4 +29,14 @@ describe('Sleep', () => {
     expect(testSleep.getDailySleepQuality('2019/07/15',1)).to.equal(2);
   });
 
+  it('should return a user\'s hours slept for the last seven days', function () {
+    const lastSevenDays = testSleep.getPriorSevenDays(7)
+    expect(lastSevenDays).to.be.an('array');
+    expect(lastSevenDays.length).to.equal(7);
+    expect(lastSevenDays[0].userID).to.equal(7);
+    expect(lastSevenDays[6].date).to.equal('2021/06/15');
+  });
+
+
+  
 });
