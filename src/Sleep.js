@@ -35,7 +35,18 @@ class Sleep {
       return false
     } else {
       return Math.round(dailySleep.hoursSlept)
-    }  }
+    }
+  }
+
+  getDailySleepQuality(date,id) {
+    const dailyQuality = this.sleepData.find(entry => 
+      entry.date === date && entry.userID === id)
+    if(!dailyQuality) {
+      return false
+    } else {
+      return Math.round(dailyQuality.sleepQuality)
+    }
+  }
 
 
 }

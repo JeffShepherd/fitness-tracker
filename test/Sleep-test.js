@@ -24,4 +24,9 @@ describe('Sleep', () => {
     expect(testSleep.getDailyHoursSlept('2019/07/15',1)).to.equal(9);
   });
 
+  it('should return a user\'s daily sleep quality', function () {
+    expect(testSleep.getDailySleepQuality('2019/06/15',1)).to.equal(2);
+    expect(testSleep.getDailySleepQuality('2019/07/15',1)).to.equal(2);
+  });
+
 });
