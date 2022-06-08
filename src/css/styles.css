@@ -77,3 +77,54 @@ main {
 #seven-days-hydration {
   display: flex;
 }
+
+#sleep-card {
+  height: auto;
+  width: 95%;
+  padding: 5% 0;
+  margin: auto;
+  border: 2px solid lightgreen;
+  background-color: whitesmoke;
+  border-radius: 7px;
+}
+
+#sleep-card-content-container{
+  display: flex;
+}
+
+#sleep-card-left-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#sleep-card-left-top-container,
+#sleep-card-left-bottom-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#sleep-card-left-top-content,
+#sleep-card-left-bottom-content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#sleep-card-right-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#seven-days-sleep-hours,
+#seven-days-sleep-quality {
+  display: flex;
+  justify-content: space-evenly;
+}

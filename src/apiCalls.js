@@ -14,3 +14,9 @@ export const userDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/us
 export const hydrationDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
   .then(checkIfError)
   .catch(err => alert(err))
+
+  
+
+  export const sleepDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+  .then(checkIfError)
+  .catch(err => alert(err))

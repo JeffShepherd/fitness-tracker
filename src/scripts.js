@@ -3,7 +3,7 @@ import './css/reset.css'
 import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
-import {userDataAPICall,hydrationDataAPICall} from './apiCalls'
+import {userDataAPICall,hydrationDataAPICall, sleepDataAPICall} from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
@@ -21,34 +21,71 @@ const dailyStepGoal = document.getElementById('user-daily-step-goal')
 const averageDailyStepGoal = document.getElementById('average-daily-step-goal')
 const todayHydrationData = document.getElementById('today-hydration-data')
 const sevenDaysHydration= document.getElementById('seven-days-hydration')
+const lastDaySleepQuality = document.getElementById('last-day-sleep-quality')
+const lastDaySleepHours = document.getElementById('last-day-sleep-hours')
+const userAverageQuality = document.getElementById('user-average-quality')
+const userAverageHours = document.getElementById('user-average-hours')
+const sevenDaysSleepHours = document.getElementById('seven-days-sleep-hours')
+const sevenDaysSleepQuality = document.getElementById('seven-days-sleep-quality')
 
-
-let userRepository, currentUser, hydrationRepo;
+let userRepository, currentUser, hydrationRepo, sleepRepo;
 
 window.addEventListener('load', getAllUserInfo)
 
 function getAllUserInfo() {
-  Promise.all([userDataAPICall, hydrationDataAPICall])
-    .then(data => populateInfoOnLoad(data[0].userData,data[1].hydrationData))
+  Promise.all([userDataAPICall, hydrationDataAPICall,sleepDataAPICall])
+    .then(data => populateInfoOnLoad(data[0].userData,data[1].hydrationData,data[2].sleepData))
 }
 
-function populateInfoOnLoad(userData, hydrationData) {
+function populateInfoOnLoad(userData, hydrationData, sleepData) {
   userRepository = new UserRepository(userData)
   currentUser = new User(userData[0])
   hydrationRepo = new Hydration(hydrationData)
+  sleepRepo = new Sleep(sleepData)
   populateCurrentUserCard()
   headerUserName.innerText = `Welcome back, ${currentUser.provideFirstName()}!`
+  const currentDate = new Date().toISOString().split('T')[0].replace(/-/g,'/')
   populateStepGoalCard()
-  populateHydrationCard()
+  populateHydrationCard(currentDate)
+  populateSleepCard(currentDate)
 }
 
-function populateHydrationCard() {
-  const currentDate = new Date().toISOString().split('T')[0].replace(/-/g,'/')
+function populateSleepCard(currentDate) {
+  const dailyQualityData = sleepRepo.getDailySleepQuality(currentDate, currentUser.id)
+  const dailyHourData = sleepRepo.getDailyHoursSlept(currentDate, currentUser.id)
+
+  if(dailyQualityData) {lastDaySleepQuality.innerText = dailyQualityData} 
+  else {lastDaySleepQuality.innerText = 'no data'}
+  if(dailyHourData) {lastDaySleepHours.innerText = dailyHourData} 
+  else {lastDaySleepHours.innerText = 'no data'}
+
+  userAverageQuality.innerText = sleepRepo.getAverageSleepQuality(currentUser.id)
+  userAverageHours.innerText = sleepRepo.getAverageHoursOfSleep(currentUser.id)
+  populateSevenDaysSleepSection()
+}
+
+function populateSevenDaysSleepSection() {
+  const sevenDaysSleepDisplay = sleepRepo.getPriorSevenDays(currentUser.id)
+  sevenDaysSleepDisplay.forEach(entry => {
+    sevenDaysSleepHours.innerHTML +=
+    `<div>
+      <p>${entry.hoursSlept}</p>
+      <p>${entry.date}</p>
+    </div>`
+    sevenDaysSleepQuality.innerHTML +=
+    `<div>
+      <p>${entry.sleepQuality}</p>
+      <p>${entry.date}</p>
+    </div>`
+  })
+}
+
+function populateHydrationCard(currentDate) {
   const data = hydrationRepo.getDailyHydration(currentDate, currentUser.id)
   if(data) {
     todayHydrationData.innerText = data
   } else {
-    todayHydrationData.innerText = 'No data has been logged for today'
+    todayHydrationData.innerText = 'no data'
   }
   addWeeklyHydrationContent()
 }
