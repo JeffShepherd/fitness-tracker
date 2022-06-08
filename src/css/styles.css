@@ -115,3 +115,16 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+#sleep-card-right-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#seven-days-sleep-hours,
+#seven-days-sleep-quality {
+  display: flex;
+  justify-content: space-evenly;
+}

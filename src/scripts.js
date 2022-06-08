@@ -25,8 +25,8 @@ const lastDaySleepQuality = document.getElementById('last-day-sleep-quality')
 const lastDaySleepHours = document.getElementById('last-day-sleep-hours')
 const userAverageQuality = document.getElementById('user-average-quality')
 const userAverageHours = document.getElementById('user-average-hours')
-
-
+const sevenDaysSleepHours = document.getElementById('seven-days-sleep-hours')
+const sevenDaysSleepQuality = document.getElementById('seven-days-sleep-quality')
 
 let userRepository, currentUser, hydrationRepo, sleepRepo;
 
@@ -61,6 +61,23 @@ function populateSleepCard(currentDate) {
 
   userAverageQuality.innerText = sleepRepo.getAverageSleepQuality(currentUser.id)
   userAverageHours.innerText = sleepRepo.getAverageHoursOfSleep(currentUser.id)
+  populateSevenDaysSleepSection()
+}
+
+function populateSevenDaysSleepSection() {
+  const sevenDaysSleepDisplay = sleepRepo.getPriorSevenDays(currentUser.id)
+  sevenDaysSleepDisplay.forEach(entry => {
+    sevenDaysSleepHours.innerHTML +=
+    `<div>
+      <p>${entry.hoursSlept}</p>
+      <p>${entry.date}</p>
+    </div>`
+    sevenDaysSleepQuality.innerHTML +=
+    `<div>
+      <p>${entry.sleepQuality}</p>
+      <p>${entry.date}</p>
+    </div>`
+  })
 }
 
 function populateHydrationCard(currentDate) {
