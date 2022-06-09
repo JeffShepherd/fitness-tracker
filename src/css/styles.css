@@ -50,16 +50,23 @@ main {
   flex-direction: column;
 }
 
-
-
 #step-goal-card {
   height: auto;
   width: 95%;
   padding: 5% 0;
   margin: auto;
-  border: 2px solid lightgreen;
+  /* border: 2px solid lightgreen; */
+  border: 2px solid purple;
   background-color: whitesmoke;
   border-radius: 7px;
+}
+
+#step-content-container {
+  display: flex;
+}
+
+#step-content-container > p,section {
+  width: 50%;
 }
 
 #hydration-card {

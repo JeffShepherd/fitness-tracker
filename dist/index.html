@@ -25,16 +25,17 @@
       </article>
       <!-- step card -->
       <article id="step-goal-card">
-        <h2>Daily Step Goal</h2>
-        <p id="user-strideLength"></p>
-        <section>
-          <p id="user-daily-step-goal"></p>
-          <p id="average-daily-step-goal"></p>
-        </section>
+        <h2>Steps</h2>
+        <div id="step-content-container">
+          <p id="user-strideLength"></p>
+          <section>
+            <canvas id="step-chart"></canvas>
+          </section>
+        </div>
       </article>
       <!-- hydration card -->
       <article id="hydration-card">
-        <h2>Water Consumption</h2>
+        <h2>Hydration</h2>
         <div id="hydration-column-container">
           <section>
             <p>Today:</p>
@@ -47,7 +48,7 @@
       </article>
       <!-- sleep card -->
       <article id="sleep-card">
-        <h2>Your Sleep Data</h2>
+        <h2>Sleep</h2>
         <div id="sleep-card-content-container">
           <!-- leftside -->
           <div id="sleep-card-left-container">

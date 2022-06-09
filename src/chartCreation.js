@@ -2,7 +2,7 @@ import Chart from 'chart.js/auto';
 
 
 const chart = {
-  makeSevenDayChart(element,dataSet, propertyName,label) {
+  makeSevenDayLineChart(element,dataSet, propertyName,label) {
     new Chart(element, {
       type: 'line',
       data: {
@@ -16,22 +16,28 @@ const chart = {
     })
   },
 
-  makeComparisonBarChar(element, userData, averageData, label) {
+  makeComparisonBarChart(element, userData, averageData, label) {
     new Chart(element, {
       type: 'bar',
       data: {
-        labels: label,
+        labels: ['you','all users average'],
         datasets: [{
-          label: 'you',
-          data: [userData]
-        },
-        {
-          label: 'national average',
-          data: [averageData]
-        }
-      ]
+          label: 'steps',
+          data: [userData,averageData],
+          backgroundColor: ['rgb(255,165,0,0.8)','rgb(128,0,128,0.8)']
+        }]
       },
-      options:[]
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: label
+          },
+          legend: {
+            display: false
+          }
+        }
+      }
     })
   }
 }

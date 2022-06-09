@@ -8,6 +8,7 @@ import User from './User';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+import chart from './chartCreation'
 
 const userName = document.getElementById('user-name')
 const userAddressOne = document.getElementById('user-address-one')
@@ -16,8 +17,6 @@ const userEmail = document.getElementById('user-email')
 const userStrideLength = document.getElementById('user-strideLength')
 const userCardBottomSection = document.getElementById('user-info-card-right-section')
 const headerUserName = document.getElementById('header-user-name')
-const dailyStepGoal = document.getElementById('user-daily-step-goal')
-const averageDailyStepGoal = document.getElementById('average-daily-step-goal')
 const todayHydrationData = document.getElementById('today-hydration-data')
 const sevenDaysHydration= document.getElementById('seven-days-hydration')
 const lastDaySleepQuality = document.getElementById('last-day-sleep-quality')
@@ -26,6 +25,7 @@ const userAverageQuality = document.getElementById('user-average-quality')
 const userAverageHours = document.getElementById('user-average-hours')
 const sevenDaysSleepHours = document.getElementById('seven-days-sleep-hours')
 const sevenDaysSleepQuality = document.getElementById('seven-days-sleep-quality')
+const stepChart = document.getElementById('step-chart')
 
 let userRepository, currentUser, hydrationRepo, sleepRepo;
 
@@ -104,8 +104,14 @@ function addWeeklyHydrationContent() {
 
 function populateStepGoalCard() {
   userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
-  dailyStepGoal.innerText = `You: ${currentUser.dailyStepGoal}`
-  averageDailyStepGoal.innerText = `All users average: ${userRepository.findAverageDailyStepGoal()}`
+
+  chart.makeComparisonBarChart(
+    stepChart,
+    currentUser.dailyStepGoal, 
+    userRepository.findAverageDailyStepGoal(),
+    'Daily Step Goal'
+  )
+
 }
 
 function populateCurrentUserCard() {
