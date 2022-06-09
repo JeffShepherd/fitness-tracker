@@ -1,8 +1,10 @@
 
 import './css/reset.css'
 import './css/styles.css';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
+import './images/walk.svg';
+import './images/water.svg';
+import './images/sleep.svg';
+
 import {userDataAPICall,hydrationDataAPICall, sleepDataAPICall} from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';

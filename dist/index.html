@@ -2,12 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <title>Fitness Tracker</title>
   </head>
   <body>
     <h1 id="header-user-name"></h1>
     <main>
-
+      
       <!-- user info card -->
       <article id="user-info-card">
         <section id="user-info-card-left-section">
@@ -25,9 +27,28 @@
         </section>
       </article>
 
+      <!-- sleep card -->
+      <article id="sleep-card">
+        <div class="card-heading-container">
+          <img src="./images/sleep.svg" alt="sleep icon" class="icon">
+          <h2 class="card-heading">Sleep</h2>
+        </div>
+        <div id="sleep-card-content-container">
+          <section id="sleep-card-left-container">
+            <canvas id="sleep-bar-chart"></canvas>
+          </section>
+          <section id="sleep-card-right-container">
+            <canvas id="sleep-line-chart"></canvas>
+          </section>
+        </div>
+      </article>
+
       <!-- step card -->
       <article id="step-goal-card">
-        <h2>Steps</h2>
+        <div class="card-heading-container">
+          <img src="./images/walk.svg" alt="shoe icon" class="icon">
+          <h2 class="card-heading">Steps</h2>
+        </div>
         <div id="step-content-container">
           <p id="user-strideLength"></p>
           <section>
@@ -38,7 +59,10 @@
 
       <!-- hydration card -->
       <article id="hydration-card">
-        <h2>Hydration</h2>
+        <div class="card-heading-container">
+          <img src="./images/water.svg" alt="Water glass icon" class="icon">
+          <h2 class="card-heading">Hydration</h2>
+        </div>
         <div id="hydration-column-container">
           <section id="hydration-card-right-container">
             <p>Today:</p>
@@ -50,19 +74,6 @@
         </div>
       </article>
 
-      <!-- sleep card -->
-      <article id="sleep-card">
-        <h2>Sleep</h2>
-        <div id="sleep-card-content-container">
-          <section id="sleep-card-left-container">
-            <canvas id="sleep-bar-chart"></canvas>
-          </section>
-          <section id="sleep-card-right-container">
-            <canvas id="sleep-line-chart"></canvas>
-          </section>
-        </div>
-      </article>
-      
     </main>
   </body>
   <script src="bundle.js"></script>
