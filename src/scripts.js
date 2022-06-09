@@ -14,8 +14,7 @@ const userAddressOne = document.getElementById('user-address-one')
 const userAddressTwo = document.getElementById('user-address-two')
 const userEmail = document.getElementById('user-email')
 const userStrideLength = document.getElementById('user-strideLength')
-const userDailyStepGoal = document.getElementById('user-dailyStepGoal')
-const userCardBottomSection = document.getElementById('user-info-card-bottom-section')
+const userCardBottomSection = document.getElementById('user-info-card-right-section')
 const headerUserName = document.getElementById('header-user-name')
 const dailyStepGoal = document.getElementById('user-daily-step-goal')
 const averageDailyStepGoal = document.getElementById('average-daily-step-goal')
@@ -104,6 +103,7 @@ function addWeeklyHydrationContent() {
 }
 
 function populateStepGoalCard() {
+  userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
   dailyStepGoal.innerText = `You: ${currentUser.dailyStepGoal}`
   averageDailyStepGoal.innerText = `All users average: ${userRepository.findAverageDailyStepGoal()}`
 }
@@ -114,8 +114,6 @@ function populateCurrentUserCard() {
   userAddressTwo.innerText = splitAddressLines[1]
   userName.innerText = currentUser.name
   userEmail.innerText = currentUser.email
-  userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
-  userDailyStepGoal.innerText = `daily step goal: ${currentUser.dailyStepGoal}`
   addFriendsToCard()
 }
 

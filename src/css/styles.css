@@ -29,23 +29,28 @@ main {
   background-color: whitesmoke;
   border-radius: 7px;
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
 }
 
-#user-info-card-top-section,
-#user-info-card-middle-section,
-#user-info-card-bottom-section {
-  width: 95%;
+#user-info-card-left-section,
+#user-info-card-right-section {
+  width: 50%;
   margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
 }
 
-#user-info-card-top-section-left, 
-#user-info-card-top-section-right {
-  width: 45%;
+#user-info-card-left-section {
+  flex-direction: column;
 }
+
+#user-info-card-left-section-top, 
+#user-info-card-left-section-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 #step-goal-card {
   height: auto;
