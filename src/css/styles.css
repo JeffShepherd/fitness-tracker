@@ -85,8 +85,9 @@ main {
   justify-content: space-evenly;
 }
 
-#seven-days-hydration {
-  display: flex;
+#hydration-card-right-container, 
+#hydration-card-left-container {
+  width: 50%;
 }
 
 #sleep-card {

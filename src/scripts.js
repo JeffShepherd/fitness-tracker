@@ -18,9 +18,9 @@ const userStrideLength = document.getElementById('user-strideLength')
 const userCardBottomSection = document.getElementById('user-info-card-right-section')
 const headerUserName = document.getElementById('header-user-name')
 const todayHydrationData = document.getElementById('today-hydration-data')
-const sevenDaysHydration= document.getElementById('seven-days-hydration')
 const stepChart = document.getElementById('step-chart')
 const sleepBarChart = document.getElementById('sleep-bar-chart')
+const hydrationLineChart = document.getElementById('hydration-line-chart')
 
 let userRepository, currentUser, hydrationRepo, sleepRepo;
 
@@ -46,17 +46,14 @@ function populateInfoOnLoad(userData, hydrationData, sleepData) {
 
 function populateSleepCard(currentDate) {
   const sevenDaysData = sleepRepo.getPriorSevenDays(currentUser.id)
-  console.log('prior seven',sevenDaysData)
-
+  // console.log('prior seven',sevenDaysData)
   const data = [
     sevenDaysData[6].hoursSlept,
     sleepRepo.getAverageHoursOfSleep(currentUser.id),
     sevenDaysData[6].sleepQuality,
     sleepRepo.getAverageSleepQuality(currentUser.id)
   ]
-
   chart.makeSleepBarChart(sleepBarChart,data )
-
 }
 
 function populateHydrationCard(currentDate) {
@@ -66,20 +63,20 @@ function populateHydrationCard(currentDate) {
   } else {
     todayHydrationData.innerText = 'no data'
   }
-  addWeeklyHydrationContent()
+
+  let weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
+  chart.makeSevenDayLineChart(hydrationLineChart,weekData)
 }
 
-function addWeeklyHydrationContent() {
-  const lastWeekData = hydrationRepo.getPriorSevenDays(currentUser.id)
-  let lastWeekDisplay =''
-  lastWeekData.forEach(entry => {
-    lastWeekDisplay +=
-    `<div>
-      <p>${entry.date}</p>
-      <p>${entry.numOunces}</p>
-    </div>`
+function formatDates(arr) {
+  arr.forEach(day=>{
+    let breakdown =  day.date.split('/')
+    breakdown[1] = parseInt(breakdown[1]).toString()
+    breakdown[2] = parseInt(breakdown[2]).toString()
+    breakdown[0] = breakdown[0].split('').splice(0,2).join('')
+    day.date = [breakdown[1],breakdown[2],breakdown[0]].join('/')
   })
-  sevenDaysHydration.innerHTML = lastWeekDisplay
+  return arr
 }
 
 function populateStepGoalCard() {

@@ -2,17 +2,28 @@ import Chart from 'chart.js/auto';
 
 
 const chart = {
-  makeSevenDayLineChart(element,dataSet, propertyName,label) {
+  makeSevenDayLineChart(element,dataSet) {
     new Chart(element, {
       type: 'line',
       data: {
         labels: dataSet.map(data => data.date),
         datasets: [{
-          label: label,
-          data: dataSet.map(data => data[propertyName])
+          label: 'Num Ounces',
+          data: dataSet.map(data => data.numOunces),
+          borderColor: ['rgb(255,165,0,0.9)'],
         }]
       },
-      options:[]
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Ounces Consumed for Last Week'
+          },
+          legend: {
+            display: false
+          }
+        }
+      }
     })
   },
 
@@ -24,7 +35,7 @@ const chart = {
         datasets: [{
           label: 'steps',
           data: [userData,averageData],
-          backgroundColor: ['rgb(255,165,0,0.8)','rgb(128,0,128,0.8)']
+          backgroundColor: ['rgb(255,165,0,0.9)','rgb(128,0,128,0.9)']
         }]
       },
       options: {
@@ -49,12 +60,12 @@ const chart = {
         datasets: [{
           label: 'last logged day',
           data: [data[0],data[2]],
-          backgroundColor: ['rgb(255,165,0,0.8)','rgb(255,165,0,0.8)']
+          backgroundColor: ['rgb(255,165,0,0.9)','rgb(255,165,0,0.9)']
         },
         {
           label: 'your average',
           data: [data[1],data[3]],
-          backgroundColor: ['rgb(128,0,128,0.8)','rgb(128,0,128,0.8)']
+          backgroundColor: ['rgb(128,0,128,0.9)','rgb(128,0,128,0.9)']
         }]
       },
       options: {
