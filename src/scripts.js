@@ -126,7 +126,3 @@ function addFriendsToCard() {
   userCardBottomSection.innerHTML = friendDisplay
 }
 
-
-
-
-
