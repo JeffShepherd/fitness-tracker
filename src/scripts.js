@@ -8,25 +8,20 @@ import User from './User';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+import chart from './chartCreation'
 
 const userName = document.getElementById('user-name')
 const userAddressOne = document.getElementById('user-address-one')
 const userAddressTwo = document.getElementById('user-address-two')
 const userEmail = document.getElementById('user-email')
 const userStrideLength = document.getElementById('user-strideLength')
-const userDailyStepGoal = document.getElementById('user-dailyStepGoal')
-const userCardBottomSection = document.getElementById('user-info-card-bottom-section')
+const userCardBottomSection = document.getElementById('user-info-card-right-section')
 const headerUserName = document.getElementById('header-user-name')
-const dailyStepGoal = document.getElementById('user-daily-step-goal')
-const averageDailyStepGoal = document.getElementById('average-daily-step-goal')
 const todayHydrationData = document.getElementById('today-hydration-data')
-const sevenDaysHydration= document.getElementById('seven-days-hydration')
-const lastDaySleepQuality = document.getElementById('last-day-sleep-quality')
-const lastDaySleepHours = document.getElementById('last-day-sleep-hours')
-const userAverageQuality = document.getElementById('user-average-quality')
-const userAverageHours = document.getElementById('user-average-hours')
-const sevenDaysSleepHours = document.getElementById('seven-days-sleep-hours')
-const sevenDaysSleepQuality = document.getElementById('seven-days-sleep-quality')
+const stepChart = document.getElementById('step-chart')
+const sleepBarChart = document.getElementById('sleep-bar-chart')
+const sleepLineChart = document.getElementById('sleep-line-chart')
+const hydrationLineChart = document.getElementById('hydration-line-chart')
 
 let userRepository, currentUser, hydrationRepo, sleepRepo;
 
@@ -50,34 +45,16 @@ function populateInfoOnLoad(userData, hydrationData, sleepData) {
   populateSleepCard(currentDate)
 }
 
-function populateSleepCard(currentDate) {
-  const dailyQualityData = sleepRepo.getDailySleepQuality(currentDate, currentUser.id)
-  const dailyHourData = sleepRepo.getDailyHoursSlept(currentDate, currentUser.id)
-
-  if(dailyQualityData) {lastDaySleepQuality.innerText = dailyQualityData} 
-  else {lastDaySleepQuality.innerText = 'no data'}
-  if(dailyHourData) {lastDaySleepHours.innerText = dailyHourData} 
-  else {lastDaySleepHours.innerText = 'no data'}
-
-  userAverageQuality.innerText = sleepRepo.getAverageSleepQuality(currentUser.id)
-  userAverageHours.innerText = sleepRepo.getAverageHoursOfSleep(currentUser.id)
-  populateSevenDaysSleepSection()
-}
-
-function populateSevenDaysSleepSection() {
-  const sevenDaysSleepDisplay = sleepRepo.getPriorSevenDays(currentUser.id)
-  sevenDaysSleepDisplay.forEach(entry => {
-    sevenDaysSleepHours.innerHTML +=
-    `<div>
-      <p>${entry.hoursSlept}</p>
-      <p>${entry.date}</p>
-    </div>`
-    sevenDaysSleepQuality.innerHTML +=
-    `<div>
-      <p>${entry.sleepQuality}</p>
-      <p>${entry.date}</p>
-    </div>`
-  })
+function populateSleepCard() {
+  const sevenDaysData = formatDates(sleepRepo.getPriorSevenDays(currentUser.id))
+  const data = [
+    sevenDaysData[6].hoursSlept,
+    sleepRepo.getAverageHoursOfSleep(currentUser.id),
+    sevenDaysData[6].sleepQuality,
+    sleepRepo.getAverageSleepQuality(currentUser.id)
+  ]
+  chart.makeSleepBarChart(sleepBarChart,data )
+  chart.makeSleepLineChart(sleepLineChart,sevenDaysData)
 }
 
 function populateHydrationCard(currentDate) {
@@ -87,25 +64,28 @@ function populateHydrationCard(currentDate) {
   } else {
     todayHydrationData.innerText = 'no data'
   }
-  addWeeklyHydrationContent()
+  let weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
+  chart.makeSevenDayLineChart(hydrationLineChart,weekData)
 }
 
-function addWeeklyHydrationContent() {
-  const lastWeekData = hydrationRepo.getPriorSevenDays(currentUser.id)
-  let lastWeekDisplay =''
-  lastWeekData.forEach(entry => {
-    lastWeekDisplay +=
-    `<div>
-      <p>${entry.date}</p>
-      <p>${entry.numOunces}</p>
-    </div>`
+function formatDates(arr) {
+  arr.forEach(day=>{
+    let breakdown =  day.date.split('/')
+    breakdown[1] = parseInt(breakdown[1]).toString()
+    breakdown[2] = parseInt(breakdown[2]).toString()
+    breakdown[0] = breakdown[0].split('').splice(0,2).join('')
+    day.date = [breakdown[1],breakdown[2],breakdown[0]].join('/')
   })
-  sevenDaysHydration.innerHTML = lastWeekDisplay
+  return arr
 }
 
 function populateStepGoalCard() {
-  dailyStepGoal.innerText = `You: ${currentUser.dailyStepGoal}`
-  averageDailyStepGoal.innerText = `All users average: ${userRepository.findAverageDailyStepGoal()}`
+  userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
+  chart.makeStepBarChart(
+    stepChart,
+    currentUser.dailyStepGoal, 
+    userRepository.findAverageDailyStepGoal()
+  )
 }
 
 function populateCurrentUserCard() {
@@ -114,8 +94,6 @@ function populateCurrentUserCard() {
   userAddressTwo.innerText = splitAddressLines[1]
   userName.innerText = currentUser.name
   userEmail.innerText = currentUser.email
-  userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
-  userDailyStepGoal.innerText = `daily step goal: ${currentUser.dailyStepGoal}`
   addFriendsToCard()
 }
 
@@ -125,8 +103,4 @@ function addFriendsToCard() {
   friendInfo.forEach(friend => friendDisplay += `<p>${friend.name}</p>`)
   userCardBottomSection.innerHTML = friendDisplay
 }
-
-
-
-
 

@@ -7,94 +7,62 @@
   <body>
     <h1 id="header-user-name"></h1>
     <main>
+
       <!-- user info card -->
       <article id="user-info-card">
-        <section id="user-info-card-top-section">
-          <div id="user-info-card-top-section-left">
+        <section id="user-info-card-left-section">
+          <div id="user-info-card-left-section-top">
             <p id="user-name"></p>
             <p id="user-email"></p>
           </div>
-          <div id="user-info-card-top-section-right">
+          <div id="user-info-card-left-section-bottom">
             <p id="user-address-one"></p>
             <p id="user-address-two"></p>
           </div>
         </section>
-        <section  id="user-info-card-middle-section">
-          <p id="user-strideLength"></p>
-          <p id="user-dailyStepGoal"></p>
-        </section>
-        <section id="user-info-card-bottom-section">
+        <section id="user-info-card-right-section">
           <!-- friends-->
         </section>
       </article>
-      <!-- global step avg comparison card -->
+
+      <!-- step card -->
       <article id="step-goal-card">
-        <h2>Daily Step Goal</h2>
-        <section>
-          <p id="user-daily-step-goal"></p>
-          <p id="average-daily-step-goal"></p>
-        </section>
+        <h2>Steps</h2>
+        <div id="step-content-container">
+          <p id="user-strideLength"></p>
+          <section>
+            <canvas id="step-chart"></canvas>
+          </section>
+        </div>
       </article>
+
       <!-- hydration card -->
       <article id="hydration-card">
-        <h2>Water Consumption</h2>
+        <h2>Hydration</h2>
         <div id="hydration-column-container">
-          <section>
+          <section id="hydration-card-right-container">
             <p>Today:</p>
             <p id="today-hydration-data"></p>
           </section>
-          <section id="seven-days-hydration">
-          <!-- hydration data -->
+          <section id="hydration-card-right-container">
+            <canvas id="hydration-line-chart"></canvas>
           </section>
         </div>
       </article>
+
       <!-- sleep card -->
       <article id="sleep-card">
-        <h2>Your Sleep Data</h2>
+        <h2>Sleep</h2>
         <div id="sleep-card-content-container">
-          <!-- leftside -->
-          <div id="sleep-card-left-container">
-            <!-- left top -->
-            <div id="sleep-card-left-top-container">
-              <p>Your last logged day:</p>
-              <section id="sleep-card-left-top-content">
-                <div class="content-container">
-                  <p id="last-day-sleep-quality"></p>
-                  <p>sleep quality</p>
-                </div>
-                <div class="content-container">
-                  <p id="last-day-sleep-hours"></p>
-                  <p>hours slept</p>
-                </div>
-              </section>
-            </div>
-            <!-- left bottom -->
-            <div id="sleep-card-left-bottom-container">
-              <p>Your averages:</p>
-              <section id="sleep-card-left-bottom-content">
-                <div class="content-container">
-                  <p id="user-average-quality"></p>
-                  <p>sleep quality</p>
-                </div>
-                <div class="content-container">
-                  <p id="user-average-hours"></p>
-                  <p>hours slept</p>
-                </div>
-              </section>
-            </div>
-          </div>
-          <!-- right side -->
-          <div id="sleep-card-right-container">
-            <section id="seven-days-sleep-hours">
-              <!-- 7 days hours data -->
-            </section>
-            <section id="seven-days-sleep-quality">
-              <!-- 7 days quality data -->
-            </section>
-          </div>
-
+          <section id="sleep-card-left-container">
+            <canvas id="sleep-bar-chart"></canvas>
+          </section>
+          <section id="sleep-card-right-container">
+            <canvas id="sleep-line-chart"></canvas>
+          </section>
         </div>
       </article>
+      
     </main>
   </body>
   <script src="bundle.js"></script>
