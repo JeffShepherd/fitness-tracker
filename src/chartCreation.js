@@ -16,7 +16,7 @@ const chart = {
     })
   },
 
-  makeComparisonBarChart(element, userData, averageData, label) {
+  makeStepBarChart(element, userData, averageData) {
     new Chart(element, {
       type: 'bar',
       data: {
@@ -31,10 +31,37 @@ const chart = {
         plugins: {
           title: {
             display: true,
-            text: label
+            text: 'Daily Step Goal'
           },
           legend: {
             display: false
+          }
+        }
+      }
+    })
+  },
+
+  makeSleepBarChart(element, data) {
+    new Chart(element, {
+      type: 'bar',
+      data: {
+        labels: ['hours slept','sleep quality'],
+        datasets: [{
+          label: 'last logged day',
+          data: [data[0],data[2]],
+          backgroundColor: ['rgb(255,165,0,0.8)','rgb(255,165,0,0.8)']
+        },
+        {
+          label: 'your average',
+          data: [data[1],data[3]],
+          backgroundColor: ['rgb(128,0,128,0.8)','rgb(128,0,128,0.8)']
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Sleep'
           }
         }
       }

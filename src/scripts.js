@@ -19,13 +19,8 @@ const userCardBottomSection = document.getElementById('user-info-card-right-sect
 const headerUserName = document.getElementById('header-user-name')
 const todayHydrationData = document.getElementById('today-hydration-data')
 const sevenDaysHydration= document.getElementById('seven-days-hydration')
-const lastDaySleepQuality = document.getElementById('last-day-sleep-quality')
-const lastDaySleepHours = document.getElementById('last-day-sleep-hours')
-const userAverageQuality = document.getElementById('user-average-quality')
-const userAverageHours = document.getElementById('user-average-hours')
-const sevenDaysSleepHours = document.getElementById('seven-days-sleep-hours')
-const sevenDaysSleepQuality = document.getElementById('seven-days-sleep-quality')
 const stepChart = document.getElementById('step-chart')
+const sleepBarChart = document.getElementById('sleep-bar-chart')
 
 let userRepository, currentUser, hydrationRepo, sleepRepo;
 
@@ -50,33 +45,18 @@ function populateInfoOnLoad(userData, hydrationData, sleepData) {
 }
 
 function populateSleepCard(currentDate) {
-  const dailyQualityData = sleepRepo.getDailySleepQuality(currentDate, currentUser.id)
-  const dailyHourData = sleepRepo.getDailyHoursSlept(currentDate, currentUser.id)
+  const sevenDaysData = sleepRepo.getPriorSevenDays(currentUser.id)
+  console.log('prior seven',sevenDaysData)
 
-  if(dailyQualityData) {lastDaySleepQuality.innerText = dailyQualityData} 
-  else {lastDaySleepQuality.innerText = 'no data'}
-  if(dailyHourData) {lastDaySleepHours.innerText = dailyHourData} 
-  else {lastDaySleepHours.innerText = 'no data'}
+  const data = [
+    sevenDaysData[6].hoursSlept,
+    sleepRepo.getAverageHoursOfSleep(currentUser.id),
+    sevenDaysData[6].sleepQuality,
+    sleepRepo.getAverageSleepQuality(currentUser.id)
+  ]
 
-  userAverageQuality.innerText = sleepRepo.getAverageSleepQuality(currentUser.id)
-  userAverageHours.innerText = sleepRepo.getAverageHoursOfSleep(currentUser.id)
-  populateSevenDaysSleepSection()
-}
+  chart.makeSleepBarChart(sleepBarChart,data )
 
-function populateSevenDaysSleepSection() {
-  const sevenDaysSleepDisplay = sleepRepo.getPriorSevenDays(currentUser.id)
-  sevenDaysSleepDisplay.forEach(entry => {
-    sevenDaysSleepHours.innerHTML +=
-    `<div>
-      <p>${entry.hoursSlept}</p>
-      <p>${entry.date}</p>
-    </div>`
-    sevenDaysSleepQuality.innerHTML +=
-    `<div>
-      <p>${entry.sleepQuality}</p>
-      <p>${entry.date}</p>
-    </div>`
-  })
 }
 
 function populateHydrationCard(currentDate) {
@@ -104,14 +84,11 @@ function addWeeklyHydrationContent() {
 
 function populateStepGoalCard() {
   userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
-
-  chart.makeComparisonBarChart(
+  chart.makeStepBarChart(
     stepChart,
     currentUser.dailyStepGoal, 
-    userRepository.findAverageDailyStepGoal(),
-    'Daily Step Goal'
+    userRepository.findAverageDailyStepGoal()
   )
-
 }
 
 function populateCurrentUserCard() {
