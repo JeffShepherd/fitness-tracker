@@ -20,6 +20,7 @@ const headerUserName = document.getElementById('header-user-name')
 const todayHydrationData = document.getElementById('today-hydration-data')
 const stepChart = document.getElementById('step-chart')
 const sleepBarChart = document.getElementById('sleep-bar-chart')
+const sleepLineChart = document.getElementById('sleep-line-chart')
 const hydrationLineChart = document.getElementById('hydration-line-chart')
 
 let userRepository, currentUser, hydrationRepo, sleepRepo;
@@ -44,9 +45,8 @@ function populateInfoOnLoad(userData, hydrationData, sleepData) {
   populateSleepCard(currentDate)
 }
 
-function populateSleepCard(currentDate) {
-  const sevenDaysData = sleepRepo.getPriorSevenDays(currentUser.id)
-  // console.log('prior seven',sevenDaysData)
+function populateSleepCard() {
+  const sevenDaysData = formatDates(sleepRepo.getPriorSevenDays(currentUser.id))
   const data = [
     sevenDaysData[6].hoursSlept,
     sleepRepo.getAverageHoursOfSleep(currentUser.id),
@@ -54,6 +54,7 @@ function populateSleepCard(currentDate) {
     sleepRepo.getAverageSleepQuality(currentUser.id)
   ]
   chart.makeSleepBarChart(sleepBarChart,data )
+  chart.makeSleepLineChart(sleepLineChart,sevenDaysData)
 }
 
 function populateHydrationCard(currentDate) {
@@ -63,7 +64,6 @@ function populateHydrationCard(currentDate) {
   } else {
     todayHydrationData.innerText = 'no data'
   }
-
   let weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
   chart.makeSevenDayLineChart(hydrationLineChart,weekData)
 }
