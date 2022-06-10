@@ -19,7 +19,6 @@ class UserRepository {
   returnFriendInfo(ids) {
     return ids.map(id => this.returnUserData(id))
   }
-
 }
 
 export default UserRepository;

@@ -1,4 +1,3 @@
-
 class Sleep {
   constructor(data) {
     this.sleepData = data
@@ -62,7 +61,6 @@ class Sleep {
     },0)
     return Math.round(totalHours/this.sleepData.length)
   }
-
 }
 
 export default Sleep;
