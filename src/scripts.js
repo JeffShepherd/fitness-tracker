@@ -83,7 +83,7 @@ function formatDates(arr) {
 }
 
 function populateStepGoalCard() {
-  userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
+  userStrideLength.innerText = `your stride length: ${currentUser.strideLength}ft`
   chart.makeStepBarChart(
     stepChart,
     currentUser.dailyStepGoal, 
