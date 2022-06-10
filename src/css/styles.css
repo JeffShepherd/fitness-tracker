@@ -119,11 +119,13 @@ text-align: center;
 
 #sleep-card-content-container{
   display: flex;
+  flex-direction: column;
 }
 
-#sleep-card-left-container,
-#sleep-card-right-container {
-  width: 50%;
+#sleep-card-left-chart,
+#sleep-card-right-chart {
+  width: 100%;
+  margin-top: 3%;
 }
 
 .icon {
@@ -171,5 +173,14 @@ width: 20%;
 
   #user-info-card-right-section {
     margin-top: 0;
+  }
+
+  #sleep-card-content-container{
+    flex-direction: row;
+  }
+  
+  #sleep-card-left-chart,
+  #sleep-card-right-chart {
+    width: 50%;
   }
 }
