@@ -4,6 +4,7 @@ import './css/styles.css';
 import './images/walk.svg';
 import './images/water.svg';
 import './images/sleep.svg';
+import './images/user.svg';
 
 import {userDataAPICall,hydrationDataAPICall, sleepDataAPICall} from './apiCalls'
 import User from './User';
@@ -17,7 +18,7 @@ const userAddressOne = document.getElementById('user-address-one')
 const userAddressTwo = document.getElementById('user-address-two')
 const userEmail = document.getElementById('user-email')
 const userStrideLength = document.getElementById('user-strideLength')
-const userCardBottomSection = document.getElementById('user-info-card-right-section')
+const userCardBottomSection = document.getElementById('user-info-card-right-section-friends')
 const headerUserName = document.getElementById('header-user-name')
 const todayHydrationData = document.getElementById('today-hydration-data')
 const stepChart = document.getElementById('step-chart')
@@ -102,7 +103,10 @@ function populateCurrentUserCard() {
 function addFriendsToCard() {
   let friendInfo = userRepository.returnFriendInfo(currentUser.friends)
   let friendDisplay = ''
-  friendInfo.forEach(friend => friendDisplay += `<p>${friend.name}</p>`)
+  friendInfo.forEach(friend => friendDisplay += `<div class="friend-container">
+  <img src="./images/user.svg" alt="user icon" class="user-icon">
+  <p>${friend.name}</p>
+  </div>`)
   userCardBottomSection.innerHTML = friendDisplay
 }
 
