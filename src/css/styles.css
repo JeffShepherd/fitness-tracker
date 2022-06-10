@@ -1,9 +1,12 @@
 
+
 body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 main {
@@ -16,64 +19,79 @@ main {
 #header-user-name {
   background-color: rgb(56, 53, 53);
   color: white;
-  text-align: right;
-  padding: 1% 2% 1% 0%;
+  text-align: left;
+  padding: 1% 0 1% 2.5%;
 }
 
 #user-info-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
-  margin: auto;
-  border: 2px solid lightgreen;
+  margin: 1% auto;
+  border: 2px solid #0bbbd6;
   background-color: whitesmoke;
   border-radius: 7px;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 #user-info-card-left-section,
 #user-info-card-right-section {
-  width: 50%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-evenly;
 }
 
-#user-info-card-left-section {
+#user-info-card-right-section {
   flex-direction: column;
+  margin-top: 4%;
+}
+
+#user-info-card-right-section {
+text-align: center;
+}
+
+#user-info-card-right-section-friends {
+  display: flex;
+  justify-content: column;
 }
 
 #user-info-card-left-section-top, 
 #user-info-card-left-section-bottom {
   display: flex;
   flex-direction: column;
+  padding: 1% 0 1% 2%;
 }
 
 #step-goal-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
-  margin: auto;
-  border: 2px solid lightgreen;
+  margin: 1% auto;
+  border: 2px solid #0bbbd6;
   background-color: whitesmoke;
   border-radius: 7px;
 }
 
 #step-content-container {
   display: flex;
+  flex-direction: column;
 }
 
-#step-content-container > p,section {
-  width: 50%;
+#step-content-container > section {
+  width: 100%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+
+#step-content-container > section > p{
+  margin: auto;
 }
 
 #hydration-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
-  margin: auto;
-  border: 2px solid lightgreen;
+  margin: 1% auto;
+  border: 2px solid #0bbbd6;
   background-color: whitesmoke;
   border-radius: 7px;
   display: flex;
@@ -82,29 +100,125 @@ main {
 
 #hydration-column-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 #hydration-card-right-container, 
 #hydration-card-left-container {
-  width: 50%;
+  width: 100%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+
+#hydration-card-left-container > p{
+  margin: auto;
 }
 
 #sleep-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
-  margin: auto;
-  border: 2px solid lightgreen;
+  margin: 1% auto;
+  border: 2px solid #0bbbd6;
   background-color: whitesmoke;
   border-radius: 7px;
 }
 
 #sleep-card-content-container{
   display: flex;
+  flex-direction: column;
 }
 
-#sleep-card-left-container,
-#sleep-card-right-container {
-  width: 50%;
+#sleep-card-left-chart,
+#sleep-card-right-chart {
+  width: 100%;
+  margin-top: 3%;
+}
+
+.icon {
+  height: 5%;
+  width: 5%
+}
+
+.friend-container {
+  width: 33%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto 0;
+}
+
+.friend-container > p,
+.friend-container > img {
+  margin:auto;
+}
+
+.user-icon {
+height: 20%;
+width: 20%;
+}
+
+.card-heading-container {
+  width: 100%;
+  display: flex;
+  padding-left: 1%;
+}
+
+.card-heading {
+  margin: auto 0 0 1%;
+}
+
+@media screen and (min-width: 1000px) {
+  #user-info-card {
+    flex-direction: row;
+    width: 95%;
+  }
+
+  #user-info-card-left-section,
+  #user-info-card-right-section {
+    width: 50%;
+    flex-direction: column;
+  }
+
+  #user-info-card-right-section {
+    margin-top: 0;
+  }
+
+  #sleep-card {
+    width: 95%;
+  }
+
+  #sleep-card-content-container{
+    flex-direction: row;
+  }
+  
+  #sleep-card-left-chart,
+  #sleep-card-right-chart {
+    width: 50%;
+  }
+
+  #step-goal-card {
+    width: 95%;
+  }
+
+  #step-content-container {
+    flex-direction: row;
+  }
+  
+  #step-content-container > section {
+    width: 50%;
+  }
+
+  #hydration-card {
+    width: 95%;
+  }
+
+  #hydration-column-container {
+    flex-direction: row;
+  }
+  
+  #hydration-card-right-container, 
+  #hydration-card-left-container {
+    width: 50%;
+  }
 }

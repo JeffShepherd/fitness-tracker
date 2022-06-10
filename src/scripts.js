@@ -1,8 +1,11 @@
 
 import './css/reset.css'
 import './css/styles.css';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
+import './images/walk.svg';
+import './images/water.svg';
+import './images/sleep.svg';
+import './images/user.svg';
+
 import {userDataAPICall,hydrationDataAPICall, sleepDataAPICall} from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
@@ -15,7 +18,7 @@ const userAddressOne = document.getElementById('user-address-one')
 const userAddressTwo = document.getElementById('user-address-two')
 const userEmail = document.getElementById('user-email')
 const userStrideLength = document.getElementById('user-strideLength')
-const userCardBottomSection = document.getElementById('user-info-card-right-section')
+const userCardBottomSection = document.getElementById('user-info-card-right-section-friends')
 const headerUserName = document.getElementById('header-user-name')
 const todayHydrationData = document.getElementById('today-hydration-data')
 const stepChart = document.getElementById('step-chart')
@@ -62,7 +65,7 @@ function populateHydrationCard(currentDate) {
   if(data) {
     todayHydrationData.innerText = data
   } else {
-    todayHydrationData.innerText = 'no data'
+    todayHydrationData.innerText = 'no data available'
   }
   let weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
   chart.makeSevenDayLineChart(hydrationLineChart,weekData)
@@ -80,7 +83,7 @@ function formatDates(arr) {
 }
 
 function populateStepGoalCard() {
-  userStrideLength.innerText = `stride length: ${currentUser.strideLength}ft`
+  userStrideLength.innerText = `your stride length: ${currentUser.strideLength}ft`
   chart.makeStepBarChart(
     stepChart,
     currentUser.dailyStepGoal, 
@@ -100,7 +103,10 @@ function populateCurrentUserCard() {
 function addFriendsToCard() {
   let friendInfo = userRepository.returnFriendInfo(currentUser.friends)
   let friendDisplay = ''
-  friendInfo.forEach(friend => friendDisplay += `<p>${friend.name}</p>`)
+  friendInfo.forEach(friend => friendDisplay += `<div class="friend-container">
+  <img src="./images/user.svg" alt="user icon" class="user-icon">
+  <p>${friend.name}</p>
+  </div>`)
   userCardBottomSection.innerHTML = friendDisplay
 }
 
