@@ -65,7 +65,7 @@ function populateHydrationCard(currentDate) {
   if(data) {
     todayHydrationData.innerText = data
   } else {
-    todayHydrationData.innerText = 'no data'
+    todayHydrationData.innerText = 'no data available'
   }
   let weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
   chart.makeSevenDayLineChart(hydrationLineChart,weekData)

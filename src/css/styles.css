@@ -24,8 +24,7 @@ main {
 }
 
 #user-info-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
   margin: 1% auto;
   border: 2px solid #0bbbd6;
@@ -38,9 +37,6 @@ main {
 
 #user-info-card-left-section,
 #user-info-card-right-section {
-  width: 98%;
-  height: auto;
-  /* margin: 0 auto; */
   display: flex;
   justify-content: space-evenly;
 }
@@ -64,12 +60,10 @@ text-align: center;
   display: flex;
   flex-direction: column;
   padding: 1% 0 1% 2%;
-  /* margin:auto; */
 }
 
 #step-goal-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
   margin: 1% auto;
   border: 2px solid #0bbbd6;
@@ -90,13 +84,11 @@ text-align: center;
 }
 
 #step-content-container > section > p{
-margin: auto;
+  margin: auto;
 }
 
-
 #hydration-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
   margin: 1% auto;
   border: 2px solid #0bbbd6;
@@ -108,17 +100,24 @@ margin: auto;
 
 #hydration-column-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
 }
 
 #hydration-card-right-container, 
 #hydration-card-left-container {
-  width: 50%;
+  width: 100%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+}
+
+#hydration-card-left-container > p{
+  margin: auto;
 }
 
 #sleep-card {
-  height: auto;
-  width: 95%;
+  width: 98%;
   padding: 5% 0;
   margin: 1% auto;
   border: 2px solid #0bbbd6;
@@ -172,6 +171,7 @@ width: 20%;
 @media screen and (min-width: 1000px) {
   #user-info-card {
     flex-direction: row;
+    width: 95%;
   }
 
   #user-info-card-left-section,
@@ -184,6 +184,10 @@ width: 20%;
     margin-top: 0;
   }
 
+  #sleep-card {
+    width: 95%;
+  }
+
   #sleep-card-content-container{
     flex-direction: row;
   }
@@ -193,11 +197,28 @@ width: 20%;
     width: 50%;
   }
 
+  #step-goal-card {
+    width: 95%;
+  }
+
   #step-content-container {
     flex-direction: row;
   }
   
   #step-content-container > section {
+    width: 50%;
+  }
+
+  #hydration-card {
+    width: 95%;
+  }
+
+  #hydration-column-container {
+    flex-direction: row;
+  }
+  
+  #hydration-card-right-container, 
+  #hydration-card-left-container {
     width: 50%;
   }
 }
