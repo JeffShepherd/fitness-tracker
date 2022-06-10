@@ -169,56 +169,36 @@ width: 20%;
 }
 
 @media screen and (min-width: 1000px) {
-  #user-info-card {
-    flex-direction: row;
+  #user-info-card,
+  #sleep-card,
+  #step-goal-card,
+  #hydration-card {
     width: 95%;
   }
 
   #user-info-card-left-section,
   #user-info-card-right-section {
-    width: 50%;
     flex-direction: column;
+  }
+
+  #user-info-card-left-section,
+  #user-info-card-right-section,
+  #sleep-card-left-chart,
+  #sleep-card-right-chart,
+  #step-content-container > section,
+  #hydration-card-right-container, 
+  #hydration-card-left-container{
+    width: 50%;
   }
 
   #user-info-card-right-section {
     margin-top: 0;
   }
 
-  #sleep-card {
-    width: 95%;
-  }
-
-  #sleep-card-content-container{
-    flex-direction: row;
-  }
-  
-  #sleep-card-left-chart,
-  #sleep-card-right-chart {
-    width: 50%;
-  }
-
-  #step-goal-card {
-    width: 95%;
-  }
-
-  #step-content-container {
-    flex-direction: row;
-  }
-  
-  #step-content-container > section {
-    width: 50%;
-  }
-
-  #hydration-card {
-    width: 95%;
-  }
-
+  #user-info-card,
+  #sleep-card-content-container,
+  #step-content-container,
   #hydration-column-container {
     flex-direction: row;
-  }
-  
-  #hydration-card-right-container, 
-  #hydration-card-left-container {
-    width: 50%;
   }
 }
