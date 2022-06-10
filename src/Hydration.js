@@ -1,4 +1,3 @@
-
 class Hydration {
   constructor(data) {
     this.hydrationData = data
@@ -32,7 +31,6 @@ class Hydration {
     )
     return lastWeekOfData.slice(lastWeekOfData.length-7,lastWeekOfData.length)
   }
-
 }
 
 export default Hydration;

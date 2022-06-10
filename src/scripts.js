@@ -67,7 +67,7 @@ function populateHydrationCard(currentDate) {
   } else {
     todayHydrationData.innerText = 'no data available'
   }
-  let weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
+  const weekData = formatDates(hydrationRepo.getPriorSevenDays(currentUser.id))
   chart.makeSevenDayLineChart(hydrationLineChart,weekData)
 }
 
@@ -101,7 +101,7 @@ function populateCurrentUserCard() {
 }
 
 function addFriendsToCard() {
-  let friendInfo = userRepository.returnFriendInfo(currentUser.friends)
+  const friendInfo = userRepository.returnFriendInfo(currentUser.friends)
   let friendDisplay = ''
   friendInfo.forEach(friend => friendDisplay += `<div class="friend-container">
   <img src="./images/user.svg" alt="user icon" class="user-icon">
@@ -109,4 +109,3 @@ function addFriendsToCard() {
   </div>`)
   userCardBottomSection.innerHTML = friendDisplay
 }
-

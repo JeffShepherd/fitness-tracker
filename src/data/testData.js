@@ -6,11 +6,7 @@ export const userTestData = [
     "email": "Diana.Hayes1@hotmail.com",
     "strideLength": 4.3,
     "dailyStepGoal": 10000,
-    "friends": [
-      16,
-      4,
-      8
-    ]
+    "friends": [16,4,8]
   },
   {
     "id": 2,
@@ -19,12 +15,7 @@ export const userTestData = [
     "email": "Dimitri.Bechtelar11@gmail.com",
     "strideLength": 4.5,
     "dailyStepGoal": 5000,
-    "friends": [
-      9,
-      18,
-      24,
-      19
-    ]
+    "friends": [9,18,24,19]
   },
   {
     "id": 3,
@@ -33,12 +24,7 @@ export const userTestData = [
     "email": "Elwin.Tromp@yahoo.com",
     "strideLength": 4.4,
     "dailyStepGoal": 5000,
-    "friends": [
-      19,
-      11,
-      42,
-      33
-    ]
+    "friends": [19,11,42,33]
   }
 ]
 
@@ -90,9 +76,5 @@ export const sleepTestData = [
   {"userID":7,"date":"2020/06/18","hoursSlept":6,"sleepQuality":6},
   {"userID":7,"date":"2020/06/30","hoursSlept":7,"sleepQuality":7},
   {"userID":7,"date":"2021/06/15","hoursSlept":8,"sleepQuality":8},
-  {"userID":7,"date":"2020/06/01","hoursSlept":9,"sleepQuality":9},
-
+  {"userID":7,"date":"2020/06/01","hoursSlept":9,"sleepQuality":9}
 ]
-
-
-

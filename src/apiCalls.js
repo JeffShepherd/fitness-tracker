@@ -1,4 +1,3 @@
-
 const checkIfError = response => {
   if (!response.ok) {
     throw new Error('An error has been encountered. Please try again.');
@@ -15,8 +14,6 @@ export const hydrationDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/
   .then(checkIfError)
   .catch(err => alert(err))
 
-  
-
-  export const sleepDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+export const sleepDataAPICall = fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
   .then(checkIfError)
   .catch(err => alert(err))
