@@ -1,4 +1,4 @@
-The basis of this project are taken from [this project spec](https://frontend.turing.edu/projects/Fitlit-part-one.html), but I took the liberty to alter some things due to data limitations. I chose this project so I could practice all aspects of a vanilla JavaScript/CSS application. This project uses technologies and features such as: multiple classes, API calls, and a library for rendering charts.
+The idea, and data, for this project is taken from [this project spec](https://frontend.turing.edu/projects/Fitlit-part-one.html), but I took the liberty to alter some things due to data limitations. I chose this project so I could practice all aspects of a vanilla JavaScript/CSS application. This project uses technologies and features such as: multiple classes, API calls, and a library for rendering charts.
 
 ## Setup
 1. Fork or clone this repository
